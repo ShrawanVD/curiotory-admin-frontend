@@ -1,0 +1,120 @@
+<link
+href=
+"
+https://fonts.googleapis.com/icon?family=Material+Icons"
+rel=
+"stylesheet"
+>
+
+<div class="dialog-box">
+  <div mat-dialog-title>
+    <h1>Qurocity.AI Blog Form</h1>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="blogForm" (ngSubmit)="submitBlogs()">
+
+      <!-- url title -->
+      <mat-form-field appearance="outline">
+        <mat-label>URL Title</mat-label>
+        <input
+          matInput
+          required
+          formControlName="urlTitle"
+        />
+      </mat-form-field>
+
+      <!-- title -->
+      <mat-form-field appearance="outline">
+        <mat-label>Blog Title</mat-label>
+        <input
+          matInput
+          placeholder="Foreign languages and globalisation.."
+          required
+          formControlName="title"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label appearance="outline">Introduction </mat-label>
+        <textarea
+          required
+          rows="2"
+          matInput
+          placeholder="Content goes here..."
+          formControlName="intro"
+        ></textarea>
+      </mat-form-field>
+
+      <angular-editor
+        placeholder="Content goes here...."
+        formControlName="content"
+        class="editor"
+      >
+      </angular-editor>
+
+      <!-- Image url 1 -->
+      <mat-form-field appearance="outline">
+        <mat-label>First Image Url</mat-label>
+        <input
+          matInput
+          placeholder="https://image.com"
+          required
+          formControlName="imageUrl"
+        />
+      </mat-form-field>
+
+       <!-- alt -->
+       <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Image Alt</mat-label>
+        <input
+          matInput
+          placeholder="Image Alt"
+          formControlName="alt"
+        />
+      </mat-form-field>
+
+
+      <!-- Meta Title -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Title</mat-label>
+        <input
+          matInput
+          placeholder="Meta title for blog"
+          formControlName="metaTitle"
+        />
+      </mat-form-field>
+
+      <!-- Meta Title -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Description</mat-label>
+        <input
+          matInput
+          placeholder="Meta description for blog"
+          formControlName="metaDescr"
+        />
+      </mat-form-field>
+
+      <!-- Meta Keyword -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Keywords</mat-label>
+        <input
+          matInput
+          placeholder="Meta keywords for blog"
+          formControlName="metaKeywords"
+        />
+      </mat-form-field>
+
+     
+      <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" type="submit">
+          {{ data ? "Update" : "Save" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <button mat-raised-button (click)="submitBlogs()" class="submitbtn"> Submit</button> -->
+

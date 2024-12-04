@@ -1,0 +1,100 @@
+<link
+href=
+"
+https://fonts.googleapis.com/icon?family=Material+Icons"
+rel=
+"stylesheet"
+>
+
+<div class="dialog-box">
+  <div mat-dialog-title>
+    <h1>Press Form</h1>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="pressForm" (ngSubmit)="submitPress()">
+
+      <!-- url title -->
+      <mat-form-field appearance="outline"> 
+        <mat-label>URL Title</mat-label>
+        <input
+          matInput
+          required
+          formControlName="urlTitle"
+        />
+      </mat-form-field>
+
+      <!-- title -->
+      <mat-form-field appearance="outline">
+        <mat-label>Press Title</mat-label>
+        <input
+          matInput
+          placeholder="The Indian Express featured.."
+          required
+          formControlName="title"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label appearance="outline">Description </mat-label>
+        <textarea
+          required
+          rows="2"
+          matInput
+          placeholder="Content goes here..."
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+
+      <angular-editor
+        placeholder="Content goes here...."
+        formControlName="content"
+        class="editor"
+      >
+      </angular-editor>
+
+
+      <!-- Meta Title -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Title</mat-label>
+        <input
+          matInput
+          placeholder="Meta title for press"
+          formControlName="metaTitle"
+        />
+      </mat-form-field>
+
+      <!-- Meta Title -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Description</mat-label>
+        <input
+          matInput
+          placeholder="Meta description for press"
+          formControlName="metaDescr"
+        />
+      </mat-form-field>
+
+      <!-- Meta Keyword -->
+      <mat-form-field appearance="outline" style="margin-bottom: 2rem">
+        <mat-label>Meta Keywords</mat-label>
+        <input
+          matInput
+          placeholder="Meta keywords for press"
+          formControlName="metaKeywords"
+        />
+      </mat-form-field>
+
+      <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" type="submit">
+          {{ data ? "Update" : "Save" }}
+        </button>
+      </div>
+
+ 
+    </form>
+  </div>
+</div>
+<!-- <button mat-raised-button (click)="submitBlogs()" class="submitbtn"> Submit</button> -->
+

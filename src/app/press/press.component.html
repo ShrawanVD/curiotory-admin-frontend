@@ -1,0 +1,108 @@
+<div class="card">
+  <div class="card-head">
+    <h1 style="font-weight: bold">Press</h1>
+    <button mat-raised-button color="primary" (click)="openAddEditEmpForm()">
+      ADD PRESS
+    </button>
+  </div>
+  <div class="card-body">
+
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="srno">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 10px; background-color: #02465b"
+          >
+            SrNo
+          </th>
+          <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="min-width: 200px; background-color: #02465b"
+          >
+            Date
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="min-width: 500px; min-height: 500px; background-color: #02465b"
+          >
+            Title
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="description">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="min-width: 500px; background-color: #02465b"
+          >
+            Description
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="description">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="min-width: 500px; background-color: #02465b"
+          >
+            Description
+          </th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.description.length > 350 ? (row.description | slice: 0:350) + '...' : row.description }}
+          </td>
+        </ng-container>
+        
+
+        <ng-container matColumnDef="action">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style=" min-width: 100px;background-color: #02465b"
+          >
+            Action
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="openEditForm(row)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="deleteEntry(row._id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      </table>
+    </div>
+  </div>
+</div>
